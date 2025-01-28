@@ -1,0 +1,40 @@
+{
+    "name": "WTA Connect",
+    "identifier": "com.wta.wtaconnect",
+    "subtitle": "Application de contrôle pour étuve WTA",
+    "description": "WTA Connect est une application iOS qui permet de contrôler et surveiller les étuves WTA via Bluetooth. Fonctionnalités principales:\n\n• Connexion Bluetooth sécurisée\n• Affichage en temps réel des températures\n• Contrôle de la température de consigne\n• Historique des mesures\n• Export PDF des données\n• Interface intuitive et moderne",
+    "version": "1.0.0",
+    "versionDate": "2024-01-28",
+    "downloadURL": "https://github.com/DrH0rse/wtaconnect/releases/download/v1.0.0/wtaconnect.ipa",
+    "size": 2000000,
+    "permissions": [
+        {
+            "type": "bluetooth",
+            "usageDescription": "Cette application nécessite l'accès au Bluetooth pour se connecter et communiquer avec vos appareils WTA."
+        }
+    ],
+    "developerName": "WTA",
+    "localizedDescription": {
+        "en": "WTA Connect is an iOS application for controlling and monitoring WTA incubators via Bluetooth. Main features:\n\n• Secure Bluetooth connection\n• Real-time temperature display\n• Setpoint temperature control\n• Measurement history\n• PDF data export\n• Modern and intuitive interface",
+        "fr": "WTA Connect est une application iOS qui permet de contrôler et surveiller les étuves WTA via Bluetooth. Fonctionnalités principales:\n\n• Connexion Bluetooth sécurisée\n• Affichage en temps réel des températures\n• Contrôle de la température de consigne\n• Historique des mesures\n• Export PDF des données\n• Interface intuitive et moderne"
+    },
+    "iconURL": "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/AppIcon.png",
+    "tintColor": "CC3333",
+    "screenshotURLs": [
+        "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/screenshots/1.png",
+        "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/screenshots/2.png",
+        "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/screenshots/3.png"
+    ],
+    "versions": [
+        {
+            "version": "1.0.0",
+            "date": "2024-01-28",
+            "localizedDescription": {
+                "en": "Initial release of WTA Connect",
+                "fr": "Première version de WTA Connect"
+            },
+            "downloadURL": "https://github.com/DrH0rse/wtaconnect/releases/download/v1.0.0/wtaconnect.ipa",
+            "size": 2000000
+        }
+    ]
+} 
