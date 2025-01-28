@@ -47,12 +47,6 @@ L'application nécessite les autorisations suivantes :
 - Interface utilisateur moderne et intuitive
 - Export PDF des données
 
-## 👥 Support
-
-Pour toute question ou assistance, veuillez contacter le support WTA :
-- Email : support@wta.fr
-- Site web : www.wta.fr
-
 ## 📄 Licence
 
-Copyright © 2024 WTA. Tous droits réservés.
+Copyright © 2024 Tous droits réservés.
