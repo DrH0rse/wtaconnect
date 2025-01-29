@@ -33,7 +33,7 @@
                 "en": "Initial release of WTA Connect",
                 "fr": "Première version de WTA Connect"
             },
-            "downloadURL": "https://github.com/DrH0rse/wtaconnect/releases/download/v1.0.0/wtaconnect.ipa",
+            "downloadURL": "https://github.com/DrH0rse/wtaconnect/blob/main/wtaconnect.ipa",
             "size": 2000000
         }
     ]
