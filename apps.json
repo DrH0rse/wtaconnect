@@ -8,21 +8,29 @@
       "name": "WTA Connect",
       "bundleIdentifier": "com.wta.wtaconnect",
       "developerName": "WTA",
+      "subtitle": "Application de contrôle pour étuve WTA",
       "version": "1.0.0",
       "versionDate": "2024-01-28T12:00:00+01:00",
-      "versionDescription": "Version initiale de WTA Connect",
-      "downloadURL": "https://github.com/DrH0rse/wtaconnect/releases/download/app/wtaconnect.ipa",
+      "downloadURL": "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/wtaconnect.ipa",
       "localizedDescription": {
         "en": "WTA Connect is an iOS application for controlling and monitoring WTA incubators via Bluetooth. Main features:\n\n• Secure Bluetooth connection\n• Real-time temperature display\n• Setpoint temperature control\n• Measurement history\n• PDF data export\n• Modern and intuitive interface",
         "fr": "WTA Connect est une application iOS qui permet de contrôler et surveiller les étuves WTA via Bluetooth. Fonctionnalités principales:\n\n• Connexion Bluetooth sécurisée\n• Affichage en temps réel des températures\n• Contrôle de la température de consigne\n• Historique des mesures\n• Export PDF des données\n• Interface intuitive et moderne"
       },
-      "iconURL": "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/AppIcon.png",
+      "iconURL": "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/wtaconnect/Assets.xcassets/AppIcon.appiconset/AppIcon.png",
       "tintColor": "CC3333",
       "size": 2000000,
       "screenshotURLs": [
-        "https://github.com/DrH0rse/wtaconnect/tree/app/screenshots/1.png",
-        "https://github.com/DrH0rse/wtaconnect/tree/app/screenshots/2.png",
-        "https://github.com/DrH0rse/wtaconnect/tree/app/screenshots/3.png"
+        "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/screenshots/1.png",
+        "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/screenshots/2.png",
+        "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/screenshots/3.png"
+      ],
+      "versions": [
+        {
+          "version": "1.0.0",
+          "date": "2024-01-28T12:00:00+01:00",
+          "size": 2000000,
+          "downloadURL": "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/wtaconnect.ipa"
+        }
       ],
       "permissions": [
         {
