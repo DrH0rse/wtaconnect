@@ -1,7 +1,8 @@
-"$schema": "./altstore.schema.json",
+{
+  "$schema": "./altstore.schema.json",
   "name": "WTA Connect Source",
   "identifier": "com.wta.source",
-  "sourceURL": "https://github.com/DrH0rse/wtaconnect/raw/main/apps.json",
+  "sourceURL": "https://raw.githubusercontent.com/DrH0rse/wtaconnect/refs/heads/main/apps.json",
   "apps": [
     {
       "name": "WTA Connect",
