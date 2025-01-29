@@ -20,34 +20,65 @@ jobs:
         with:
           xcode-version: '15.0'
 
+      - name: Check project structure
+        run: |
+          echo "=== Current Directory ==="
+          pwd
+          echo "=== Directory Contents ==="
+          ls -la
+          echo "=== Xcode Project Search ==="
+          find . -name "*.xcodeproj" -type d
+          if [ -d "wtaconnect.xcodeproj" ]; then
+            echo "=== Project Structure ==="
+            ls -R wtaconnect.xcodeproj
+            echo "=== Project File Contents ==="
+            cat wtaconnect.xcodeproj/project.pbxproj || echo "Cannot read project file"
+          else
+            echo "Project file not found"
+            exit 1
+          fi
+
       - name: Show Xcode version
         run: xcodebuild -version
 
-      - name: Show build settings
-        run: xcodebuild -list
-
-      - name: Set Default Scheme
+      - name: Create new Xcode project
+        if: ${{ failure() }}
         run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
+          xcodebuild -create \
+            -template "Single View App" \
+            -destination . \
+            -project wtaconnect.xcodeproj \
+            -target wtaconnect \
+            -bundleID "com.wta.wtaconnect" \
+            -allowProvisioningUpdates
 
       - name: Build and Analyze
-        env:
-          scheme: ${{ 'default' }}
         run: |
-          if [ $scheme = default ]; then scheme=$(cat default); fi
+          # Trouver le scheme automatiquement
+          SCHEME=$(ls wtaconnect.xcodeproj/xcshareddata/xcschemes/*.xcscheme 2>/dev/null | head -n 1 | sed 's/.*\/\(.*\)\.xcscheme/\1/')
+          if [ -z "$SCHEME" ]; then
+            SCHEME="wtaconnect"
+          fi
+          echo "Using scheme: $SCHEME"
+          
           xcodebuild clean build analyze \
-            -scheme "wtaconnect" \
+            -scheme "$SCHEME" \
             -project "wtaconnect.xcodeproj" \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=17.0" \
+            -sdk iphonesimulator \
+            -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
             -configuration Debug \
             ONLY_ACTIVE_ARCH=YES \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
-            | xcpretty --color --simple && exit ${PIPESTATUS[0]}
+            | tee build.log | xcpretty && exit ${PIPESTATUS[0]}
+
+      - name: Upload build log
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-log
+          path: build.log
 
       - name: Upload build artifacts
         if: success()
@@ -58,6 +89,3 @@ jobs:
             build/
             *.ipa
             *.app 
-            build/
-            *.ipa
-            *.app
