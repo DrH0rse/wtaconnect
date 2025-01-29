@@ -14,9 +14,9 @@ Application iOS pour le contrôle et la surveillance des étuves WTA via Bluetoo
 
 ## 📱 Captures d'écran
 
-![Scan](/screenshots/1.png)
-![Dashboard](/screenshots/2.png)
-![History](/screenshots/3.png)
+![Scan](/screenshots/1.PNG)
+![Dashboard](/screenshots/2.PNG)
+![History](/screenshots/3.PNG)
 
 ## 🛠 Installation
 
