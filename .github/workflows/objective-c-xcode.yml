@@ -2,9 +2,9 @@ name: WTA Connect - Build and Analyze
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
@@ -57,22 +57,7 @@ jobs:
           path: |
             build/
             *.ipa
-            *.app |
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          xcodebuild clean build analyze \
-            -scheme "$scheme" \
-            -project "wtaconnect.xcodeproj" \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=17.0" \
-            CODE_SIGN_IDENTITY="" \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGNING_ALLOWED=NO \
-            | xcpretty && exit ${PIPESTATUS[0]}
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: build-artifacts
-          path: |
+            *.app 
             build/
             *.ipa
             *.app
