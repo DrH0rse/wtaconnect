@@ -20,65 +20,37 @@ jobs:
         with:
           xcode-version: '15.0'
 
-      - name: Check project structure
+      - name: Show build settings
         run: |
           echo "=== Current Directory ==="
           pwd
-          echo "=== Directory Contents ==="
-          ls -la
-          echo "=== Xcode Project Search ==="
-          find . -name "*.xcodeproj" -type d
-          if [ -d "wtaconnect.xcodeproj" ]; then
-            echo "=== Project Structure ==="
-            ls -R wtaconnect.xcodeproj
-            echo "=== Project File Contents ==="
-            cat wtaconnect.xcodeproj/project.pbxproj || echo "Cannot read project file"
-          else
-            echo "Project file not found"
-            exit 1
-          fi
+          echo "=== Project Structure ==="
+          ls -R
+          echo "=== Xcode Project Info ==="
+          xcodebuild -list -project wtaconnect.xcodeproj || true
 
-      - name: Show Xcode version
-        run: xcodebuild -version
-
-      - name: Create new Xcode project
-        if: ${{ failure() }}
+      - name: Build and Test
         run: |
-          xcodebuild -create \
-            -template "Single View App" \
-            -destination . \
+          xcodebuild clean test \
             -project wtaconnect.xcodeproj \
-            -target wtaconnect \
-            -bundleID "com.wta.wtaconnect" \
-            -allowProvisioningUpdates
-
-      - name: Build and Analyze
-        run: |
-          # Trouver le scheme automatiquement
-          SCHEME=$(ls wtaconnect.xcodeproj/xcshareddata/xcschemes/*.xcscheme 2>/dev/null | head -n 1 | sed 's/.*\/\(.*\)\.xcscheme/\1/')
-          if [ -z "$SCHEME" ]; then
-            SCHEME="wtaconnect"
-          fi
-          echo "Using scheme: $SCHEME"
-          
-          xcodebuild clean build analyze \
-            -scheme "$SCHEME" \
-            -project "wtaconnect.xcodeproj" \
-            -sdk iphonesimulator \
+            -scheme wtaconnect \
             -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
             -configuration Debug \
+            -enableCodeCoverage YES \
             ONLY_ACTIVE_ARCH=YES \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
-            | tee build.log | xcpretty && exit ${PIPESTATUS[0]}
+            | tee build.log | xcpretty --color --simple && exit ${PIPESTATUS[0]}
 
-      - name: Upload build log
+      - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: build-log
-          path: build.log
+          name: test-results
+          path: |
+            build.log
+            *.xcresult
 
       - name: Upload build artifacts
         if: success()
