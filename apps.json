@@ -5,7 +5,7 @@
     "description": "WTA Connect est une application iOS qui permet de contrôler et surveiller les étuves WTA via Bluetooth. Fonctionnalités principales:\n\n• Connexion Bluetooth sécurisée\n• Affichage en temps réel des températures\n• Contrôle de la température de consigne\n• Historique des mesures\n• Export PDF des données\n• Interface intuitive et moderne",
     "version": "1.0.0",
     "versionDate": "2024-01-28",
-    "downloadURL": "https://github.com/DrH0rse/wtaconnect/blob/main/wtaconnect.ipa",
+    "downloadURL": "https://github.com/DrH0rse/wtaconnect/releases/download/app/wtaconnect.ipa",
     "size": 2000000,
     "permissions": [
         {
@@ -21,9 +21,9 @@
     "iconURL": "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/AppIcon.png",
     "tintColor": "CC3333",
     "screenshotURLs": [
-        "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/screenshots/1.png",
-        "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/screenshots/2.png",
-        "https://raw.githubusercontent.com/DrH0rse/wtaconnect/main/screenshots/3.png"
+        "https://github.com/DrH0rse/wtaconnect/tree/app/screenshots/1.png",
+        "https://github.com/DrH0rse/wtaconnect/tree/app/screenshots/2.png",
+        "https://github.com/DrH0rse/wtaconnect/tree/app/screenshots/3.png"
     ],
     "versions": [
         {
@@ -33,7 +33,7 @@
                 "en": "Initial release of WTA Connect",
                 "fr": "Première version de WTA Connect"
             },
-            "downloadURL": "https://github.com/DrH0rse/wtaconnect/blob/main/wtaconnect.ipa",
+            "downloadURL": "https://github.com/DrH0rse/wtaconnect/releases/download/app/wtaconnect.ipa",
             "size": 2000000
         }
     ]
