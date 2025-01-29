@@ -20,37 +20,76 @@ jobs:
         with:
           xcode-version: '15.0'
 
-      - name: Show build settings
+      - name: Install XcodeGen
+        run: |
+          brew install xcodegen
+
+      - name: Show current directory
         run: |
           echo "=== Current Directory ==="
           pwd
-          echo "=== Project Structure ==="
+          echo "=== Project Structure Before ==="
           ls -R
-          echo "=== Xcode Project Info ==="
-          xcodebuild -list -project wtaconnect.xcodeproj || true
 
-      - name: Build and Test
+      - name: Create new Xcode project
         run: |
-          xcodebuild clean test \
+          # Supprimer l'ancien projet s'il existe
+          rm -rf wtaconnect.xcodeproj
+          
+          # Configuration du projet
+          cat > project.yml << EOL
+          name: wtaconnect
+          options:
+            bundleIdPrefix: com.wta
+            deploymentTarget: "15.0"
+            xcodeVersion: "15.0"
+          targets:
+            wtaconnect:
+              type: application
+              platform: iOS
+              sources:
+                - path: wtaconnect
+              info:
+                path: wtaconnect/Info.plist
+                properties:
+                  CFBundleShortVersionString: "1.0.0"
+                  CFBundleVersion: "1"
+                  UIMainStoryboardFile: ""
+                  UILaunchStoryboardName: "LaunchScreen"
+              settings:
+                base:
+                  PRODUCT_BUNDLE_IDENTIFIER: com.wta.wtaconnect
+                  DEVELOPMENT_TEAM: ""
+                  CODE_SIGN_IDENTITY: ""
+                  CODE_SIGNING_REQUIRED: NO
+                  CODE_SIGNING_ALLOWED: NO
+          EOL
+          
+          # Générer le projet
+          xcodegen generate
+          
+          echo "=== Project Structure After ==="
+          ls -R
+
+      - name: Build project
+        run: |
+          xcodebuild clean build \
             -project wtaconnect.xcodeproj \
             -scheme wtaconnect \
             -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
             -configuration Debug \
-            -enableCodeCoverage YES \
             ONLY_ACTIVE_ARCH=YES \
             CODE_SIGN_IDENTITY="" \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGNING_ALLOWED=NO \
             | tee build.log | xcpretty --color --simple && exit ${PIPESTATUS[0]}
 
-      - name: Upload test results
+      - name: Upload build log
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: test-results
-          path: |
-            build.log
-            *.xcresult
+          name: build-log
+          path: build.log
 
       - name: Upload build artifacts
         if: success()
