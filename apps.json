@@ -1,19 +1,15 @@
 "$schema": "./altstore.schema.json",
   "name": "WTA Connect Source",
-  "identifier": "com.wta.wtaconnect.source",
+  "identifier": "com.wta.source",
   "sourceURL": "https://github.com/DrH0rse/wtaconnect/raw/main/apps.json",
   "apps": [
     {
       "name": "WTA Connect",
       "bundleIdentifier": "com.wta.wtaconnect",
       "developerName": "WTA",
-      "subtitle": "Application de contrôle pour étuve WTA",
       "version": "1.0.0",
       "versionDate": "2024-01-28T12:00:00+01:00",
-      "versionDescription": {
-        "en": "Initial release of WTA Connect",
-        "fr": "Première version de WTA Connect"
-      },
+      "versionDescription": "Version initiale de WTA Connect",
       "downloadURL": "https://github.com/DrH0rse/wtaconnect/releases/download/app/wtaconnect.ipa",
       "localizedDescription": {
         "en": "WTA Connect is an iOS application for controlling and monitoring WTA incubators via Bluetooth. Main features:\n\n• Secure Bluetooth connection\n• Real-time temperature display\n• Setpoint temperature control\n• Measurement history\n• PDF data export\n• Modern and intuitive interface",
@@ -37,9 +33,9 @@
   ],
   "news": [
     {
-      "title": "WTA Connect Release",
-      "identifier": "wta-connect-release",
-      "caption": "WTA Connect est maintenant disponible ! Cette première version inclut toutes les fonctionnalités essentielles pour contrôler vos étuves WTA.",
+      "title": "WTA Connect - Lancement",
+      "identifier": "wta-connect-launch",
+      "caption": "WTA Connect est maintenant disponible ! Découvrez notre nouvelle application pour le contrôle des étuves WTA.",
       "date": "2024-01-28",
       "notify": true,
       "tintColor": "CC3333"
